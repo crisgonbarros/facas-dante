@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Facas Dante — Loja Online | v1.3 -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -434,7 +435,7 @@
     }
     .lightbox.open { display: flex; }
     .lightbox img {
-      max-width: 90vw; max-height: 90vh;
+      max-width: 80vw; max-height: 85vh;
       object-fit: contain; border-radius: var(--radius-md);
     }
     .lightbox-close {
@@ -444,6 +445,26 @@
       border: 1px solid var(--gold-dim); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: var(--gold); cursor: pointer;
+    }
+    .lightbox-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.4rem; cursor: pointer;
+      transition: background var(--transition);
+      z-index: 2;
+    }
+    .lightbox-btn:hover { background: rgba(201,168,76,0.2); }
+    .lightbox-btn.prev { left: 1.5rem; }
+    .lightbox-btn.next { right: 1.5rem; }
+    .lightbox-counter {
+      position: absolute; bottom: 1.5rem; left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem; color: var(--silver);
+      letter-spacing: 0.12em;
     }
 
     /* COMO FUNCIONA */
@@ -1699,11 +1720,18 @@
 </footer>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+<div class="lightbox" id="lightbox">
   <img id="lightbox-img" src="" alt="Faca Dante" />
+  <button class="lightbox-btn prev" onclick="lightboxNav(-1)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="lightbox-btn next" onclick="lightboxNav(1)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
   <button class="lightbox-close" onclick="closeLightbox()">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
 
 <script>
@@ -1760,20 +1788,70 @@
   }
 
   /* Lightbox */
+  let lightboxSlides = [];
+  let lightboxIndex = 0;
+
   function openLightbox(slide) {
     const img = slide.querySelector('img');
     if (!img || !img.complete || img.naturalWidth === 0) return;
-    document.getElementById('lightbox-img').src = img.src;
+    const carousel = slide.closest('.carousel');
+    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+    lightboxSlides = slides
+      .map(s => s.querySelector('img'))
+      .filter(i => i && i.complete && i.naturalWidth !== 0);
+    lightboxIndex = lightboxSlides.indexOf(img);
+    updateLightbox();
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-  function closeLightbox(e) {
-    if (!e || e.target === document.getElementById('lightbox')) {
-      document.getElementById('lightbox').classList.remove('open');
-      document.body.style.overflow = '';
+
+  function updateLightbox() {
+    const img = lightboxSlides[lightboxIndex];
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-img').alt = img.alt;
+    const counter = document.getElementById('lightbox-counter');
+    if (lightboxSlides.length > 1) {
+      counter.textContent = `${lightboxIndex + 1} / ${lightboxSlides.length}`;
+      counter.style.display = 'block';
+    } else {
+      counter.style.display = 'none';
     }
+    // Esconde setas se só tiver 1 foto
+    document.querySelector('.lightbox-btn.prev').style.display = lightboxSlides.length > 1 ? 'flex' : 'none';
+    document.querySelector('.lightbox-btn.next').style.display = lightboxSlides.length > 1 ? 'flex' : 'none';
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  function lightboxNav(dir) {
+    lightboxIndex = (lightboxIndex + dir + lightboxSlides.length) % lightboxSlides.length;
+    updateLightbox();
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxSlides = [];
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') lightboxNav(1);
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+  });
+
+  /* Swipe no lightbox mobile */
+  let lbStartX = 0;
+  document.getElementById('lightbox').addEventListener('touchstart', e => {
+    lbStartX = e.touches[0].clientX;
+  }, { passive: true });
+  document.getElementById('lightbox').addEventListener('touchend', e => {
+    const diff = lbStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) lightboxNav(diff > 0 ? 1 : -1);
+  });
 
   /* Encomenda → WhatsApp */
   function enviarEncomenda(e) {
