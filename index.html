@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Facas Dante — Loja | Cutelaria Artesanal</title>
+  <meta name="description" content="Facas artesanais únicas em aço inox, carbono e damasco. Peças exclusivas feitas à mão por Dante Roberto Brescianini. Presente nos melhores churrascos do Brasil." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:       #C9A84C;
+      --gold-light: #E2C97E;
+      --gold-dim:   #8A6F2E;
+      --carbon:     #0E0E0E;
+      --carbon-2:   #161616;
+      --carbon-3:   #1F1F1F;
+      --carbon-4:   #2A2A2A;
+      --ash:        #3A3A3A;
+      --smoke:      #6B6B6B;
+      --silver:     #A8A8A8;
+      --white:      #F5F3EE;
+      --white-dim:  #CFCDC8;
+      --radius-sm:  4px;
+      --radius-md:  8px;
+      --radius-lg:  12px;
+      --transition: 0.25s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--carbon);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* ICON SVG inline util */
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon svg { display: block; }
+
+    /* Typography */
+    .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .gold-rule {
+      width: 48px; height: 2px;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+      margin: 0 auto 2rem;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 64px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo img { height: 36px; width: auto; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--silver); transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      background: var(--gold); color: var(--carbon);
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition);
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--gold); border-radius: 2px;
+    }
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--carbon-2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      z-index: 99; padding: 1.5rem 2rem;
+      flex-direction: column; gap: 1.25rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--silver); padding: 0.5rem 0;
+      border-bottom: 1px solid var(--ash);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 7rem 2rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 60%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 780px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--gold-dim);
+    }
+    .hero-logo { width: 280px; max-width: 80vw; margin: 0 auto 1.5rem; }
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      font-style: italic; color: var(--gold-light);
+      margin-bottom: 2.5rem; letter-spacing: 0.02em;
+    }
+    .hero-headline {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600; line-height: 1.15;
+      letter-spacing: 0.02em; color: var(--white); margin-bottom: 1.25rem;
+    }
+    .hero-headline span { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      color: var(--white-dim); max-width: 520px;
+      margin: 0 auto 3rem; line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 2rem; background: var(--gold); color: var(--carbon);
+      font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border: 1px solid rgba(201,168,76,0.5); color: var(--gold-light);
+      font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: var(--smoke); font-size: 0.7rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* CREDIBILITY BAR */
+    .cred-bar {
+      background: var(--carbon-3);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 1.5rem 2rem;
+    }
+    .cred-bar-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-around;
+      align-items: center; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .cred-item { display: flex; align-items: center; gap: 0.75rem; }
+    .cred-icon {
+      width: 36px; height: 36px; color: var(--gold); flex-shrink: 0;
+    }
+    .cred-item strong { display: block; font-size: 0.95rem; font-weight: 600; color: var(--white); }
+    .cred-item span { font-size: 0.75rem; color: var(--silver); }
+
+    /* SECTION */
+    .section { padding: 5rem 2rem; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 600; letter-spacing: 0.04em;
+      color: var(--white); margin-bottom: 0.75rem;
+    }
+    .section-title span { color: var(--gold); }
+    .section-desc {
+      font-size: 0.95rem; color: var(--silver);
+      max-width: 540px; margin: 0 auto; line-height: 1.75;
+    }
+
+    /* CATALOG */
+    .catalog-section { background: var(--carbon); padding: 5rem 2rem; }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem; max-width: 1280px; margin: 0 auto;
+    }
+    .product-card {
+      background: var(--carbon-3);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: var(--radius-lg);
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .product-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+
+    /* CAROUSEL */
+    .carousel {
+      position: relative; background: var(--carbon-4);
+      aspect-ratio: 4/3; overflow: hidden;
+    }
+    .carousel-track {
+      display: flex; height: 100%;
+      transition: transform 0.4s ease;
+    }
+    .carousel-slide {
+      flex-shrink: 0; width: 100%; height: 100%;
+      cursor: zoom-in;
+    }
+    .carousel-slide img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .carousel-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.5rem; color: var(--ash);
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 26px; height: 26px;
+      background: rgba(0,0,0,0.65);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 0.8rem; cursor: pointer;
+      transition: background var(--transition); z-index: 2;
+    }
+    .carousel-btn:hover { background: rgba(201,168,76,0.2); }
+    .carousel-btn.prev { left: 6px; }
+    .carousel-btn.next { right: 6px; }
+    .carousel-dots {
+      position: absolute; bottom: 6px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 4px; z-index: 2;
+    }
+    .carousel-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(255,255,255,0.3); cursor: pointer;
+      transition: background var(--transition);
+    }
+    .carousel-dot.active { background: var(--gold); }
+
+    /* CARD BODY */
+    .card-body {
+      padding: 1.25rem; display: flex;
+      flex-direction: column; flex: 1;
+    }
+    .card-tag {
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 0.4rem;
+    }
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.3rem; line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 0.78rem; color: var(--silver);
+      line-height: 1.6; margin-bottom: 1rem; flex: 1;
+    }
+    .card-price-block { margin-bottom: 1rem; }
+    .card-price-label {
+      font-size: 0.65rem; color: var(--smoke);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.15rem;
+    }
+    .card-price { display: flex; align-items: baseline; gap: 0.25rem; }
+    .card-price .currency { font-size: 0.8rem; font-weight: 500; color: var(--gold-light); }
+    .card-price .amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem; font-weight: 700; color: var(--gold); line-height: 1;
+    }
+    .card-price .cents { font-size: 0.8rem; color: var(--gold-light); }
+    .card-price-note { font-size: 0.68rem; color: var(--smoke); margin-top: 0.2rem; }
+    .card-actions { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .btn-comprar {
+      width: 100%; padding: 0.7rem;
+      background: var(--gold); color: var(--carbon);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: var(--radius-sm); text-align: center;
+      transition: background var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    }
+    .btn-comprar:hover { background: var(--gold-light); }
+    .btn-consultar {
+      width: 100%; padding: 0.7rem; background: transparent;
+      color: var(--gold); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: var(--radius-sm); text-align: center;
+      border: 1px solid rgba(201,168,76,0.45);
+      transition: border-color var(--transition), background var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    }
+    .btn-consultar:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+    .btn-info {
+      width: 100%; padding: 0.55rem; background: transparent;
+      color: var(--silver); font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border-radius: var(--radius-sm); text-align: center;
+      border: 1px solid var(--ash);
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .btn-info:hover { border-color: var(--smoke); color: var(--white); }
+
+    /* DETAIL PANEL */
+    .card-detail {
+      display: none; padding: 0 1.25rem 1.25rem;
+      border-top: 1px solid var(--ash); margin-top: 0.25rem;
+    }
+    .card-detail.open { display: block; }
+    .card-detail h4 {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 0.6rem; margin-top: 1rem;
+    }
+    .card-detail p { font-size: 0.78rem; color: var(--silver); line-height: 1.65; }
+    .card-detail ul { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+    .card-detail ul li {
+      font-size: 0.78rem; color: var(--silver);
+      padding-left: 1rem; position: relative;
+    }
+    .card-detail ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold-dim); }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.93);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw; max-height: 90vh;
+      object-fit: contain; border-radius: var(--radius-md);
+    }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      width: 36px; height: 36px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid var(--gold-dim); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); cursor: pointer;
+    }
+
+    /* COMO FUNCIONA */
+    .como-section {
+      background: var(--carbon-2); padding: 5rem 2rem;
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .como-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2rem; max-width: 1100px; margin: 0 auto;
+    }
+    .como-step { text-align: center; padding: 1.5rem 1rem; }
+    .como-step-icon {
+      width: 56px; height: 56px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.22);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; color: var(--gold);
+    }
+    .como-step-num {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      color: var(--gold-dim); letter-spacing: 0.15em; margin-bottom: 0.75rem;
+    }
+    .como-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.5rem;
+    }
+    .como-step p { font-size: 0.8rem; color: var(--silver); line-height: 1.65; }
+
+    /* ENCOMENDA */
+    .encomenda-section { background: var(--carbon); padding: 5rem 2rem; }
+    .encomenda-inner {
+      max-width: 700px; margin: 0 auto;
+      background: var(--carbon-3);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius-lg); padding: 3rem;
+    }
+    .encomenda-form { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--carbon-4); border: 1px solid var(--ash);
+      border-radius: var(--radius-sm); padding: 0.7rem 0.9rem;
+      color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.88rem;
+      transition: border-color var(--transition); outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold-dim); }
+    .form-group select option { background: var(--carbon-3); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-hint { font-size: 0.74rem; color: var(--smoke); line-height: 1.55; }
+    .ddi-row { display: grid; grid-template-columns: 100px 1fr; gap: 0.5rem; }
+    .btn-encomenda {
+      width: 100%; padding: 1rem; background: var(--gold); color: var(--carbon);
+      font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .btn-encomenda:hover { background: var(--gold-light); }
+
+    /* FOOTER */
+    .footer {
+      background: var(--carbon-2);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 2.5rem;
+    }
+    .footer-brand img { height: 48px; width: auto; margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.8rem; color: var(--smoke); line-height: 1.7; max-width: 240px; }
+    .footer-col h4 {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a { font-size: 0.82rem; color: var(--silver); transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-social { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+    .footer-social a {
+      width: 38px; height: 38px; border: 1px solid var(--ash); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--silver); transition: border-color var(--transition), color var(--transition);
+    }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      padding-top: 1.5rem; border-top: 1px solid var(--ash);
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.75rem; color: var(--smoke); }
+    .footer-bottom a { color: var(--gold-dim); transition: color var(--transition); }
+    .footer-bottom a:hover { color: var(--gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+      .como-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+      .como-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .encomenda-inner { padding: 2rem 1.5rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      /* Cards compactos no mobile */
+      .card-body { padding: 0.75rem; }
+      .card-tag { font-size: 0.6rem; }
+      .card-name { font-size: 0.9rem; margin-bottom: 0.2rem; }
+      .card-desc { font-size: 0.72rem; margin-bottom: 0.6rem; }
+      .card-price-label { font-size: 0.6rem; }
+      .card-price .amount { font-size: 1.25rem; }
+      .card-price .currency, .card-price .cents { font-size: 0.7rem; }
+      .card-price-note { font-size: 0.62rem; }
+      .btn-comprar, .btn-consultar { font-size: 0.68rem; padding: 0.6rem 0.4rem; }
+      .btn-info { font-size: 0.65rem; padding: 0.45rem; }
+      .card-detail p, .card-detail ul li { font-size: 0.72rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: center; }
+      .cred-bar-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <img src="img/logo.png" alt="Facas Dante" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li><a href="#como-funciona">Como Funciona</a></li>
+    <li><a href="#encomenda">Encomenda</a></li>
+    <li><a href="https://www.facasdante.com.br" target="_blank">Sobre Dante</a></li>
+  </ul>
+  <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20as%20facas%20disponíveis." class="nav-cta" target="_blank">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    Falar com a Equipe
+  </a>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#catalogo" onclick="toggleMenu()">Catálogo</a>
+  <a href="#como-funciona" onclick="toggleMenu()">Como Funciona</a>
+  <a href="#encomenda" onclick="toggleMenu()">Encomenda Personalizada</a>
+  <a href="https://www.facasdante.com.br" target="_blank">Sobre Dante</a>
+  <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20as%20facas%20disponíveis." target="_blank">Falar com a Equipe</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="label">Cutelaria Artesanal</span>
+    </div>
+    <img src="img/logo.png" alt="Facas Dante" class="hero-logo" />
+    <p class="hero-tagline">Presente nos melhores churrascos.</p>
+    <h1 class="hero-headline">Cada peça é <span>única.</span><br />Cada lâmina conta uma história.</h1>
+    <p class="hero-sub">Facas artesanais de alto padrão, forjadas à mão por Dante Roberto Brescianini — mestre cuteleiro com mais de 25 anos de ofício. Entregamos em todo o Brasil.</p>
+    <div class="hero-actions">
+      <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
+      <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20as%20facas%20disponíveis." class="btn-secondary" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Falar com a Equipe
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Rolar</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="#6B6B6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</section>
+
+<!-- CREDIBILITY BAR -->
+<div class="cred-bar">
+  <div class="cred-bar-inner">
+    <div class="cred-item">
+      <div class="cred-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div><strong>+25 anos de ofício</strong><span>Tradição e técnica apurada</span></div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div><strong>Peças únicas</strong><span>Nenhuma faca é igual à outra</span></div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div><strong>Entrega em todo o Brasil</strong><span>Pelos Correios, com segurança</span></div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      <div><strong>PIX ou cartão</strong><span>Parcelamento disponível</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CATÁLOGO -->
+<section class="catalog-section" id="catalogo">
+  <div class="section-header">
+    <p class="label" style="text-align:center;margin-bottom:0.75rem;">Catálogo</p>
+    <div class="gold-rule"></div>
+    <h2 class="section-title">Nossas <span>Facas</span></h2>
+    <p class="section-desc">Cada peça é produzida artesanalmente. Cabos em madeiras nobres, chifres naturais, canela de avestruz e materiais especiais — conforme disponibilidade.</p>
+  </div>
+  <div class="product-grid">
+
+    <!-- Macro para gerar carrossel: slides com src a preencher -->
+
+    <!-- TUCUMÃ -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tucuma-1.jpg" alt="Faca Tucumã" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tucuma-2.jpg" alt="Faca Tucumã" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tucuma-3.jpg" alt="Faca Tucumã" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Tucumã</h3>
+        <p class="card-desc">Lâmina em aço inox, cabo em canela preta boliviana, angico, rádica de imbuia ou pau brasil. Compacta e versátil.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">199</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Tucumã%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço inoxidável · Lâmina 2,5"</li>
+          <li>Espessura 2,6mm</li>
+          <li>Cabo: canela boliviana, angico, rádica de imbuia ou pau brasil</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TUIM -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tuim-1.jpg" alt="Faca Tuim" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tuim-2.jpg" alt="Faca Tuim" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tuim-3.jpg" alt="Faca Tuim" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Tuim</h3>
+        <p class="card-desc">Aço inox, cabo em resina branca ou preta. Prática, resistente e de fácil manutenção.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">299</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Tuim%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço inox · Lâmina 5" · Espessura 2,5mm</li>
+          <li>Cabo em resina branca ou preta</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CABOCLA -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/cabocla-1.jpg" alt="Faca Cabocla" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/cabocla-2.jpg" alt="Faca Cabocla" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/cabocla-3.jpg" alt="Faca Cabocla" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Cabocla</h3>
+        <p class="card-desc">Aço cirúrgico, cabo em madeiras de lei variadas. 308g de equilíbrio perfeito na mão.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">350</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Cabocla%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço inox cirúrgico · Lâmina 4"</li>
+          <li>Espessura 2,5mm · Altura 34mm · Peso 308g</li>
+          <li>Cabo em madeiras de lei variadas</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- NHAMBU -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/nhambu-1.jpg" alt="Faca Nhambu" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/nhambu-2.jpg" alt="Faca Nhambu" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/nhambu-3.jpg" alt="Faca Nhambu" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Nhambu</h3>
+        <p class="card-desc">Aço inox 420C, 6,5" de lâmina. Cabo em madeiras diversas. Equilibrada e versátil para churrasco e campo.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">359</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Nhambu%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço inox 420C · Lâmina 6,5"</li>
+          <li>Espessura 2,6mm · Altura 43mm · Peso 625g (com bainha)</li>
+          <li>Cabo em madeiras diversas</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CURIÓ -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/curio-1.jpg" alt="Faca Curió" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/curio-2.jpg" alt="Faca Curió" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/curio-3.jpg" alt="Faca Curió" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Curió</h3>
+        <p class="card-desc">Aço cirúrgico 420C, lâmina 7". Cabo em madeira de lei. Leve, precisa e elegante.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">359</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Curió%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço inox cirúrgico 420C · Lâmina 7"</li>
+          <li>Espessura 2,5mm · Altura 32mm · Peso 320g</li>
+          <li>Cabo em madeira de lei</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SOL -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/sol-1.jpg" alt="Faca Sol" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/sol-2.jpg" alt="Faca Sol" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/sol-3.jpg" alt="Faca Sol" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Sol</h3>
+        <p class="card-desc">Aço cirúrgico Full Tang. Cabo em osso e madeira. Muito resistente — churrascos e pescarias por todo o Brasil.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">359</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Sol%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço inox cirúrgico · Full Tang · Lâmina 6"</li>
+          <li>Espessura 4mm · Altura 40mm</li>
+          <li>Cabo em osso e madeira</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SABIÁ (5 fotos) -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/sabia-1.jpg" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/sabia-2.jpg" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/sabia-3.jpg" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/sabia-4.jpg" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/sabia-5.jpg" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Sabiá</h3>
+        <p class="card-desc">Aço inox, lâmina 9". Variações em carbono, inox e fosfatizada. Cabo em madeiras nobres.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">399</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Sabiá%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço inox · Lâmina 9" · Espessura 2,6mm · Altura 34mm</li>
+          <li>Peso 355g (sem bainha) · Cabo Roxinho SP</li>
+          <li>Variações: carbono · inox · fosfatizada · cabo madeira</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ANU -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/anu-1.jpg" alt="Faca Anu" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/anu-2.jpg" alt="Faca Anu" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/anu-3.jpg" alt="Faca Anu" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Anu</h3>
+        <p class="card-desc">Aço carbono Full Tang, lâmina 10". Cabo em Imbuia, 530g. Robusta para quem não abre mão de qualidade.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">399</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Anu%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço carbono · Full Tang · Lâmina 10"</li>
+          <li>Espessura 3mm · Altura 42mm · Peso 530g</li>
+          <li>Cabo em madeira Imbuia</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TUCANO (5 fotos) -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tucano-1.jpg" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tucano-2.jpg" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tucano-3.jpg" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tucano-4.jpg" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tucano-5.jpg" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Tucano</h3>
+        <p class="card-desc">Alto carbono Full Tang, 9" e 790g. Variações em carbono, inox, fosfatizada e polida. Para campo, pesca e campereada.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">399</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Tucano%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço alto carbono · Full Tang · Lâmina 9"</li>
+          <li>Espessura 5mm · Altura 53mm · Peso 790g</li>
+          <li>Cabo em Gonçalo Alves · Furo no cabo para amarração</li>
+          <li>Variações: carbono · inox · fosfatizada · polida</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TROPEIRO (5 fotos) -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tropeiro-1.jpg" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tropeiro-2.jpg" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tropeiro-3.jpg" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tropeiro-4.jpg" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tropeiro-5.jpg" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Tropeiro</h3>
+        <p class="card-desc">Alto carbono, Brut de Forge. Lâmina 10", 635g. Variações de cabo: Imbuia, chifre de cervo ou costas escamuteadas.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">399</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Tropeiro%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço alto carbono · Brut de Forge · Lâmina 10"</li>
+          <li>Espessura 3mm · Altura 49mm · Peso 635g</li>
+          <li>Variações: Imbuia · chifre de cervo · costas escamuteadas</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- IRERÊ -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/irere-1.jpg" alt="Faca Irerê" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/irere-2.jpg" alt="Faca Irerê" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/irere-3.jpg" alt="Faca Irerê" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal</p>
+        <h3 class="card-name">Faca Irerê</h3>
+        <p class="card-desc">Alto carbono polida e mosqueada. Full Tang, 10" e 571g. Resistente a impactos — churrasco, campo e pescaria.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">499</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Irerê%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço alto carbono · Polida · Mosqueada · Full Tang</li>
+          <li>Lâmina 10" · Espessura 4mm · Altura 40mm · Peso 571g</li>
+          <li>Cabo em Imbuia com pinos de latão</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GROSA -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/grosa-1.jpg" alt="Faca Grosa" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/grosa-2.jpg" alt="Faca Grosa" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/grosa-3.jpg" alt="Faca Grosa" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Artesanal · Premium</p>
+        <h3 class="card-name">Faca Grosa</h3>
+        <p class="card-desc">Peça de alto padrão com acabamento premium. Para colecionadores e conhecedores exigentes.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">850</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Grosa%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <p>Consulte disponibilidade e opções de acabamento diretamente com o Sr. Dante.</p>
+      </div>
+    </div>
+
+    <!-- PICANHEIRA -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/picanheira-1.jpg" alt="Faca Picanheira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/picanheira-2.jpg" alt="Faca Picanheira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/picanheira-3.jpg" alt="Faca Picanheira" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Churrasqueira</p>
+        <h3 class="card-name">Faca Picanheira</h3>
+        <p class="card-desc">Aço cirúrgico, lâmina 10". Cabo em chifre de boi, canela de avestruz ou madeiras nobres. Guarda e pomo em latão.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">479</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Faca%20Picanheira%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço cirúrgico · Lâmina 10" · Peso 560g</li>
+          <li>Espessura 3mm · Altura 41mm · Guarda e pomo em latão</li>
+          <li>Variações de cabo: chifre de boi · canela de avestruz · madeiras nobres</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CHURRASQUEIRAS -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/churrasqueira-1.jpg" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/churrasqueira-2.jpg" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/churrasqueira-3.jpg" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/churrasqueira-4.jpg" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/churrasqueira-5.jpg" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Churrasqueira</p>
+        <h3 class="card-name">Facas Churrasqueiras</h3>
+        <p class="card-desc">As mais populares da marca. Disponíveis em 8" e 10". Lâminas em inox, carbono ou damasco. Cabos variados.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">399</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20as%20Facas%20Churrasqueiras%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Tamanhos: 8" e 10"</li>
+          <li>Lâminas: inox · carbono · damasco</li>
+          <li>Cabos: madeiras nobres · chifre · canela de avestruz</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CONJUNTO CHAIRA -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/conjunto-chaira-1.jpg" alt="Conjunto Faca + Chaira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/conjunto-chaira-2.jpg" alt="Conjunto Faca + Chaira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/conjunto-chaira-3.jpg" alt="Conjunto Faca + Chaira" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Kit Completo</p>
+        <h3 class="card-name">Churrasqueira + Chaira</h3>
+        <p class="card-desc">Faca churrasqueira + chaira em kit completo. Disponível em 8" e 10". O presente ideal para churrasqueiros.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">559</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20o%20Conjunto%20Churrasqueira%20e%20Chaira%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>O que está incluso</h4>
+        <ul>
+          <li>1 faca churrasqueira (8" ou 10")</li>
+          <li>1 chaira de afiação</li>
+          <li>Bainha de couro · Variações de cabo e lâmina disponíveis</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FACAS FORJADAS -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/forjada-1.jpg" alt="Faca Forjada" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/forjada-2.jpg" alt="Faca Forjada" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/forjada-3.jpg" alt="Faca Forjada" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Premium · Forjada</p>
+        <h3 class="card-name">Facas Forjadas 10"</h3>
+        <p class="card-desc">Processo de forja manual com acabamento elevado. A linha premium da Facas Dante — para quem quer o melhor.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">890</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20as%20Facas%20Forjadas%2010%22%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Forja manual · Lâmina 10"</li>
+          <li>Materiais e acabamentos conforme disponibilidade</li>
+          <li>Consulte opções de cabo e lâmina com o Sr. Dante</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DU CHEF (5 fotos) -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/duchef-1.jpg" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/duchef-2.jpg" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/duchef-3.jpg" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/duchef-4.jpg" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/duchef-5.jpg" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Cozinha Profissional</p>
+        <h3 class="card-name">Linha Du Chef</h3>
+        <p class="card-desc">Facas de cozinha artesanais de alto padrão. Disponíveis em 8", 10" e 12". Cabos em madeira, resina, chifre ou canela de avestruz.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">359</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Linha%20Du%20Chef%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço inox · Tamanhos: 8" · 10" · 12"</li>
+          <li>Facas mais altas — ideal para uso profissional em cozinha</li>
+          <li>Cabos: madeira · resina · chifre · canela de avestruz</li>
+          <li>Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TESOURA DE TOSQUIA (5 fotos) -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tosquia-1.jpg" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tosquia-2.jpg" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tosquia-3.jpg" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tosquia-4.jpg" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/tosquia-5.jpg" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Peça Histórica</p>
+        <h3 class="card-name">Tesoura de Tosquia</h3>
+        <p class="card-desc">Lâminas forjadas a partir de tesouras de tosquia antigas importadas do Uruguai e da Inglaterra. Cada peça carrega história antes de chegar nas mãos do Dante.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">479</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Disponibilidade limitada</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20as%20Facas%20de%20Tesoura%20de%20Tosquia%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-consultar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Consultar Disponibilidade
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Sobre as peças</h4>
+        <p>Lâminas de tesouras de tosquia antigas importadas por Juan Mailios (Montevidéu/Uruguai), Brocua &amp; Scholberg, Varela Rádio e Burgon Ball (Inglaterra). Cada lâmina temperada e reestilizada artesanalmente. Guarda e pomo em latão. Cabos em chifre de boi, Gonçalo Alves ou Guaritá. Estoque conforme materiais disponíveis.</p>
+      </div>
+    </div>
+
+    <!-- FACÕES REESTILIZADOS -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/facoes-1.jpg" alt="Facões Reestilizados" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/facoes-2.jpg" alt="Facões Reestilizados" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/facoes-3.jpg" alt="Facões Reestilizados" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Peça Histórica</p>
+        <h3 class="card-name">Facões Reestilizados</h3>
+        <p class="card-desc">Facas criadas a partir de facões importados originais — Ralph Martindale (o Jacaré inglês) e Corneta 3 Listras. Cabos completamente refeitos à mão.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">359</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Disponibilidade limitada</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20os%20Facões%20Reestilizados%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-consultar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Consultar Disponibilidade
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Sobre as peças</h4>
+        <p>Lâminas de facões importados originais cortados, temperados e reestilizados na cutelaria. Acabamento cromado ou fosfatizado. Cabos completamente refeitos com materiais nobres. Origens: Ralph Martindale (Jacaré) e Corneta 3 Listras.</p>
+      </div>
+    </div>
+
+    <!-- DAMASCO (5 fotos) -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/damasco-1.jpg" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/damasco-2.jpg" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/damasco-3.jpg" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/damasco-4.jpg" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/damasco-5.jpg" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Colecionável · Damasco</p>
+        <h3 class="card-name">Linha Aço Damasco</h3>
+        <p class="card-desc">80 a 120 camadas de aço. Disponível em 8" a 12". Cabos em pau brasil, madeiras de lei, chifre de cervo ou canela de avestruz.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">1.990</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20a%20Linha%20Aço%20Damasco%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-consultar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Consultar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Especificações</h4>
+        <ul>
+          <li>Aço damasco · 80 a 120 camadas</li>
+          <li>Tamanhos: 8" · 9" · 10" · 11" · 12"</li>
+          <li>Cabos: madeiras de lei · pau brasil · chifre de cervo · canela de avestruz · mistos</li>
+          <li>Pomo em aço damasco · Acompanha bainha de couro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CANIVETES -->
+    <div class="product-card">
+      <div class="carousel" data-index="0">
+        <div class="carousel-track">
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/canivete-1.jpg" alt="Canivete Artesanal" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/canivete-2.jpg" alt="Canivete Artesanal" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img src="img/canivete-3.jpg" alt="Canivete Artesanal" onerror="this.parentNode.classList.add('ph')"/></div>
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
+        <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
+        <div class="carousel-dots"><div class="carousel-dot active"></div><div class="carousel-dot"></div><div class="carousel-dot"></div></div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">Exclusivo Facas Dante</p>
+        <h3 class="card-name">Canivetes Artesanais</h3>
+        <p class="card-desc">Linha exclusiva de canivetes artesanais da marca Facas Dante. Acabamento manual, materiais selecionados.</p>
+        <div class="card-price-block">
+          <p class="card-price-label">A partir de</p>
+          <div class="card-price"><span class="currency">R$</span><span class="amount">150</span><span class="cents">,00</span></div>
+          <p class="card-price-note">PIX · Cartão disponível</p>
+        </div>
+        <div class="card-actions">
+          <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vi%20os%20Canivetes%20Artesanais%20no%20site%20Facas%20Dante%20e%20gostaria%20de%20saber%20mais%20sobre%20disponibilidade%20e%20preço." class="btn-comprar" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Comprar
+          </a>
+          <button class="btn-info" onclick="toggleDetail(this)">+ Detalhes</button>
+        </div>
+      </div>
+      <div class="card-detail">
+        <h4>Sobre os canivetes</h4>
+        <p>Linha exclusiva artesanal Facas Dante. Consulte modelos, tamanhos e materiais disponíveis diretamente com a equipe.</p>
+      </div>
+    </div>
+
+  </div><!-- /product-grid -->
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="como-section" id="como-funciona">
+  <div class="section-header">
+    <p class="label" style="text-align:center;margin-bottom:0.75rem;">Simples assim</p>
+    <div class="gold-rule"></div>
+    <h2 class="section-title">Como <span>Funciona</span></h2>
+    <p class="section-desc">Comprar uma Facas Dante é direto, pessoal e sem complicação.</p>
+  </div>
+  <div class="como-grid">
+    <div class="como-step">
+      <div class="como-step-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <p class="como-step-num">Passo 01</p>
+      <h3>Escolha sua faca</h3>
+      <p>Navegue pelo catálogo, veja os modelos e encontre a peça que combina com você.</p>
+    </div>
+    <div class="como-step">
+      <div class="como-step-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </div>
+      <p class="como-step-num">Passo 02</p>
+      <h3>Fale com a equipe</h3>
+      <p>Clique em Comprar e fale direto pelo WhatsApp. A equipe apresenta as peças disponíveis e tira todas as dúvidas.</p>
+    </div>
+    <div class="como-step">
+      <div class="como-step-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      <p class="como-step-num">Passo 03</p>
+      <h3>Combine e pague</h3>
+      <p>Acertamos os detalhes e você paga via PIX ou cartão. Simples, seguro e sem burocracia.</p>
+    </div>
+    <div class="como-step">
+      <div class="como-step-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H19M12 5l7 7-7 7"/></svg>
+      </div>
+      <p class="como-step-num">Passo 04</p>
+      <h3>Receba em casa</h3>
+      <p>Sua faca é embalada com cuidado e enviada pelos Correios para qualquer lugar do Brasil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENCOMENDA -->
+<section class="encomenda-section" id="encomenda">
+  <div class="section-header">
+    <p class="label" style="text-align:center;margin-bottom:0.75rem;">Feita para você</p>
+    <div class="gold-rule"></div>
+    <h2 class="section-title">Encomenda <span>Personalizada</span></h2>
+    <p class="section-desc">Quer uma faca com sua cara? Descreva o que imagina e o Sr. Dante avalia a viabilidade para criar sua peça única.</p>
+  </div>
+  <div class="encomenda-inner">
+    <p style="font-size:0.85rem;color:var(--silver);margin-bottom:1.5rem;line-height:1.7;">Preencha o formulário com suas informações e descreva a faca que deseja. Entraremos em contato pelo WhatsApp para conversar sobre os detalhes.</p>
+    <form class="encomenda-form" onsubmit="enviarEncomenda(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="enc-nome">Nome</label>
+          <input type="text" id="enc-nome" placeholder="Seu nome completo" required />
+        </div>
+        <div class="form-group">
+          <label for="enc-email">E-mail</label>
+          <input type="email" id="enc-email" placeholder="seu@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>WhatsApp / Telefone</label>
+        <div class="ddi-row">
+          <select id="enc-ddi">
+            <option value="+55">+55 BR</option>
+            <option value="+1">+1 US</option>
+            <option value="+54">+54 AR</option>
+            <option value="+598">+598 UY</option>
+            <option value="+595">+595 PY</option>
+            <option value="+591">+591 BO</option>
+            <option value="+56">+56 CL</option>
+            <option value="+51">+51 PE</option>
+            <option value="+49">+49 DE</option>
+            <option value="+44">+44 UK</option>
+            <option value="+351">+351 PT</option>
+            <option value="+39">+39 IT</option>
+          </select>
+          <input type="tel" id="enc-telefone" placeholder="(00) 00000-0000" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="enc-descricao">Descreva sua encomenda</label>
+        <textarea id="enc-descricao" rows="5" placeholder="Ex: Gostaria de uma faca churrasqueira de 10&quot; com lâmina em aço damasco e cabo em chifre de cervo. Seria para presente..." required></textarea>
+        <p class="form-hint">Conte o máximo que puder: tipo de faca, lâmina preferida, tipo de cabo, tamanho, ocasião de uso ou personalização especial.</p>
+      </div>
+      <button type="submit" class="btn-encomenda">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Enviar pelo WhatsApp
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="img/logo.png" alt="Facas Dante" />
+      <p>Cutelaria artesanal de alto padrão. Cada peça é única — forjada à mão por Dante Roberto Brescianini com mais de 25 anos de ofício.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/facasdante/" target="_blank" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.facebook.com/facasdante" target="_blank" title="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://wa.me/5567999489905" target="_blank" title="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Catálogo</h4>
+      <ul>
+        <li><a href="#catalogo">Facas Artesanais</a></li>
+        <li><a href="#catalogo">Facas Churrasqueiras</a></li>
+        <li><a href="#catalogo">Linha Du Chef</a></li>
+        <li><a href="#catalogo">Aço Damasco</a></li>
+        <li><a href="#catalogo">Canivetes</a></li>
+        <li><a href="#encomenda">Encomenda Personalizada</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="https://wa.me/5567999489905" target="_blank">(67) 99948-9905</a></li>
+        <li><a href="https://www.instagram.com/facasdante/" target="_blank">@facasdante</a></li>
+        <li><a href="https://www.facasdante.com.br" target="_blank">Sobre Dante</a></li>
+      </ul>
+      <div style="margin-top:1.5rem;">
+        <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20as%20facas%20disponíveis." class="btn-primary" target="_blank" style="font-size:0.75rem;padding:0.65rem 1.25rem;display:inline-flex;align-items:center;gap:0.4rem;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          Falar com a Equipe
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Facas Dante — Todos os direitos reservados. Uso responsável conforme legislação vigente.</p>
+    <p><a href="https://www.facasdante.com.br" target="_blank">Conheça a história do Sr. Dante &rarr;</a></p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <img id="lightbox-img" src="" alt="Faca Dante" />
+  <button class="lightbox-close" onclick="closeLightbox()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</div>
+
+<script>
+  /* Mobile menu */
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  document.addEventListener('click', e => {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.querySelector('.nav-hamburger');
+    if (!menu.contains(e.target) && !btn.contains(e.target)) menu.classList.remove('open');
+  });
+
+  /* Carousel */
+  function getCarousel(btn) { return btn.closest('.carousel'); }
+  function updateCarousel(c) {
+    const idx = parseInt(c.dataset.index);
+    const slides = c.querySelectorAll('.carousel-slide');
+    c.querySelector('.carousel-track').style.transform = `translateX(-${idx * 100}%)`;
+    c.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+  function nextSlide(btn) {
+    const c = getCarousel(btn);
+    const total = c.querySelectorAll('.carousel-slide').length;
+    c.dataset.index = (parseInt(c.dataset.index) + 1) % total;
+    updateCarousel(c);
+  }
+  function prevSlide(btn) {
+    const c = getCarousel(btn);
+    const total = c.querySelectorAll('.carousel-slide').length;
+    c.dataset.index = (parseInt(c.dataset.index) - 1 + total) % total;
+    updateCarousel(c);
+  }
+  document.querySelectorAll('.carousel').forEach(c => {
+    let sx = 0;
+    c.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    c.addEventListener('touchend', e => {
+      const diff = sx - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        const total = c.querySelectorAll('.carousel-slide').length;
+        c.dataset.index = diff > 0
+          ? (parseInt(c.dataset.index) + 1) % total
+          : (parseInt(c.dataset.index) - 1 + total) % total;
+        updateCarousel(c);
+      }
+    });
+  });
+
+  /* Details toggle */
+  function toggleDetail(btn) {
+    const detail = btn.closest('.product-card').querySelector('.card-detail');
+    const open = detail.classList.toggle('open');
+    btn.textContent = open ? '− Fechar' : '+ Detalhes';
+  }
+
+  /* Lightbox */
+  function openLightbox(slide) {
+    const img = slide.querySelector('img');
+    if (!img || !img.complete || img.naturalWidth === 0) return;
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e) {
+    if (!e || e.target === document.getElementById('lightbox')) {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* Encomenda → WhatsApp */
+  function enviarEncomenda(e) {
+    e.preventDefault();
+    const nome = document.getElementById('enc-nome').value.trim();
+    const email = document.getElementById('enc-email').value.trim();
+    const ddi = document.getElementById('enc-ddi').value;
+    const tel = document.getElementById('enc-telefone').value.trim();
+    const desc = document.getElementById('enc-descricao').value.trim();
+    const msg = `Olá Dante! Gostaria de fazer uma encomenda personalizada.\n\n*Nome:* ${nome}\n*E-mail:* ${email}\n*Telefone:* ${ddi} ${tel}\n\n*Descrição da encomenda:*\n${desc}`;
+    window.open(`https://wa.me/5567999489905?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+</script>
+</body>
+</html>
