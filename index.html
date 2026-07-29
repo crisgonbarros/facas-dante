@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Facas Dante — Loja Online | v1.6 -->
+<!-- Facas Dante — Loja Online | v1.8 -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -172,10 +172,10 @@
 
     /* HERO */
     .hero {
-      min-height: 100svh;
+      min-height: 80svh;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      text-align: center; padding: 7rem 2rem 5rem;
+      text-align: center; padding: 5rem 2rem 3rem;
       position: relative; overflow: hidden;
     }
     .hero-bg {
@@ -191,24 +191,24 @@
     .hero-eyebrow::before, .hero-eyebrow::after {
       content: ''; display: block; width: 32px; height: 1px; background: var(--gold-dim);
     }
-    .hero-logo { width: 280px; max-width: 80vw; margin: 0 auto 1.5rem; }
+    .hero-logo { width: 180px; max-width: 60vw; margin: 0 auto 1.25rem; }
     .hero-tagline {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1rem, 3vw, 1.35rem);
+      font-size: clamp(0.85rem, 2vw, 1.1rem);
       font-style: italic; color: var(--gold-light);
-      margin-bottom: 2.5rem; letter-spacing: 0.02em;
+      margin-bottom: 1.75rem; letter-spacing: 0.02em;
     }
     .hero-headline {
       font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
       font-weight: 600; line-height: 1.15;
-      letter-spacing: 0.02em; color: var(--white); margin-bottom: 1.25rem;
+      letter-spacing: 0.02em; color: var(--white); margin-bottom: 1rem;
     }
     .hero-headline span { color: var(--gold); }
     .hero-sub {
-      font-size: clamp(0.9rem, 2vw, 1.05rem);
-      color: var(--white-dim); max-width: 520px;
-      margin: 0 auto 3rem; line-height: 1.75;
+      font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+      color: var(--white-dim); max-width: 480px;
+      margin: 0 auto 2.5rem; line-height: 1.75;
     }
     .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .btn-primary {
@@ -599,7 +599,12 @@
       .form-row { grid-template-columns: 1fr; }
       .encomenda-inner { padding: 2rem 1.5rem; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
-      /* Cards compactos no mobile */
+      /* Hero mais compacto no mobile */
+      .hero { min-height: 60svh; padding: 4rem 1.5rem 2.5rem; }
+      .hero-logo { width: 140px; }
+      .hero-tagline { margin-bottom: 1rem; }
+      .hero-headline { margin-bottom: 0.75rem; }
+      .hero-sub { margin-bottom: 1.75rem; }
       .card-body { padding: 0.75rem; }
       .card-tag { font-size: 0.6rem; }
       .card-name { font-size: 0.9rem; margin-bottom: 0.2rem; }
@@ -661,7 +666,7 @@
     <img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/logo.png?raw=true" alt="Facas Dante" class="hero-logo" />
     <p class="hero-tagline">Presente nos melhores churrascos.</p>
     <h1 class="hero-headline">Cada peça é <span>única.</span><br />Cada lâmina conta uma história.</h1>
-    <p class="hero-sub">Facas artesanais de alto padrão, forjadas à mão por Dante Roberto Brescianini — mestre cuteleiro com mais de 25 anos de ofício. Entregamos em todo o Brasil.</p>
+    <p class="hero-sub">Cutelaria artesanal de alto padrão fundada por Dante Roberto Brescianini — referência em cutelaria com mais de 25 anos de experiência. Entregamos em todo o Brasil.</p>
     <div class="hero-actions">
       <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
       <a href="https://wa.me/5567999489905?text=Olá%20Dante!%20Vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20as%20facas%20disponíveis." class="btn-secondary" target="_blank">
