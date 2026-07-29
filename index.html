@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- Facas Dante — Loja Online | v1.8 -->
+<!-- Facas Dante — Loja Online | v2.1 -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Facas Dante — Cutelaria Artesanal | Presente nos Melhores Churrascos</title>
-  <meta name="description" content="Facas artesanais únicas em aço inox, carbono e damasco, feitas à mão por Dante Roberto Brescianini — mestre cuteleiro com mais de 25 anos de ofício. Entrega em todo o Brasil." />
+  <meta name="description" content="Facas artesanais únicas em aço inox, carbono e damasco. Cutelaria de alto padrão fundada por Dante Roberto Brescianini com mais de 25 anos de experiência. Entrega em todo o Brasil." />
   <meta name="keywords" content="facas artesanais, cutelaria artesanal, faca churrasqueira, faca damasco, faca de campo, faca colecionável, facas dante, cuteleiro, faca personalizada, churrasco" />
   <meta name="author" content="Facas Dante" />
   <meta name="robots" content="index, follow" />
@@ -42,8 +42,8 @@
     "name": "Facas Dante",
     "description": "Cutelaria artesanal de alto padrão. Facas únicas feitas à mão por Dante Roberto Brescianini com mais de 25 anos de ofício.",
     "url": "https://loja.facasdante.com.br",
-    "logo": "https://github.com/crisgonbarros/facas-dante/blob/main/img/logo.png?raw=true",
-    "image": "https://github.com/crisgonbarros/facas-dante/blob/main/img/og-image.png?raw=true",
+    "logo": "https://loja.facasdante.com.br/img/logo.png",
+    "image": "https://loja.facasdante.com.br/img/og-image.png",
     "telephone": "+55-67-99948-9905",
     "address": {
       "@type": "PostalAddress",
@@ -94,15 +94,6 @@
     img { display: block; width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
     button { cursor: pointer; font-family: inherit; border: none; background: none; }
-
-    /* ICON SVG inline util */
-    .icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .icon svg { display: block; }
 
     /* Typography */
     .label {
@@ -230,17 +221,7 @@
       transition: border-color var(--transition), color var(--transition);
     }
     .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
-    .hero-scroll {
-      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-      color: var(--smoke); font-size: 0.7rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%       { transform: translateX(-50%) translateY(6px); }
-    }
+
 
     /* CREDIBILITY BAR */
     .cred-bar {
@@ -251,8 +232,9 @@
     }
     .cred-bar-inner {
       max-width: 1100px; margin: 0 auto;
-      display: flex; justify-content: space-around;
-      align-items: center; flex-wrap: wrap; gap: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
     }
     .cred-item { display: flex; align-items: center; gap: 0.75rem; }
     .cred-icon {
@@ -261,7 +243,6 @@
     .cred-item strong { display: block; font-size: 0.95rem; font-weight: 600; color: var(--white); }
     .cred-item span { font-size: 0.75rem; color: var(--silver); }
 
-    /* SECTION */
     .section { padding: 5rem 2rem; }
     .section-header { text-align: center; margin-bottom: 3.5rem; }
     .section-title {
@@ -588,6 +569,8 @@
     @media (max-width: 1100px) {
       .product-grid { grid-template-columns: repeat(3, 1fr); }
       .como-grid { grid-template-columns: repeat(2, 1fr); }
+      .como-arrow { display: none; }
+      .cred-bar-inner { grid-template-columns: repeat(4, 1fr); }
     }
     @media (max-width: 768px) {
       .nav-links, .nav-cta { display: none; }
@@ -619,7 +602,7 @@
     }
     @media (max-width: 480px) {
       .hero-actions { flex-direction: column; align-items: center; }
-      .cred-bar-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -631,7 +614,7 @@
 <!-- NAV -->
 <nav class="nav">
   <a href="#" class="nav-logo">
-    <img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/logo.png?raw=true" alt="Facas Dante" />
+    <img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/logo.png?raw=true" alt="Facas Dante" />
   </a>
   <ul class="nav-links">
     <li><a href="#catalogo">Catálogo</a></li>
@@ -663,7 +646,7 @@
     <div class="hero-eyebrow">
       <span class="label">Cutelaria Artesanal</span>
     </div>
-    <img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/logo.png?raw=true" alt="Facas Dante" class="hero-logo" />
+    <img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/logo.png?raw=true" alt="Facas Dante" class="hero-logo" />
     <p class="hero-tagline">Presente nos melhores churrascos.</p>
     <h1 class="hero-headline">Cada peça é <span>única.</span><br />Cada lâmina conta uma história.</h1>
     <p class="hero-sub">Cutelaria artesanal de alto padrão fundada por Dante Roberto Brescianini — referência em cutelaria com mais de 25 anos de experiência. Entregamos em todo o Brasil.</p>
@@ -675,10 +658,7 @@
       </a>
     </div>
   </div>
-  <div class="hero-scroll">
-    <span>Rolar</span>
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="#6B6B6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </div>
+
 </section>
 
 <!-- CREDIBILITY BAR -->
@@ -727,9 +707,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucuma-1.png?raw=true" alt="Faca Tucumã" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucuma-2.png?raw=true" alt="Faca Tucumã" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucuma-3.png?raw=true" alt="Faca Tucumã" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucuma-1.png?raw=true" alt="Faca Tucumã" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucuma-2.png?raw=true" alt="Faca Tucumã" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucuma-3.png?raw=true" alt="Faca Tucumã" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -767,9 +747,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tuim-1.png?raw=true" alt="Faca Tuim" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tuim-2.png?raw=true" alt="Faca Tuim" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tuim-3.png?raw=true" alt="Faca Tuim" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tuim-1.png?raw=true" alt="Faca Tuim" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tuim-2.png?raw=true" alt="Faca Tuim" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tuim-3.png?raw=true" alt="Faca Tuim" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -806,9 +786,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/cabocla-1.png?raw=true" alt="Faca Cabocla" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/cabocla-2.png?raw=true" alt="Faca Cabocla" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/cabocla-3.png?raw=true" alt="Faca Cabocla" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/cabocla-1.png?raw=true" alt="Faca Cabocla" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/cabocla-2.png?raw=true" alt="Faca Cabocla" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/cabocla-3.png?raw=true" alt="Faca Cabocla" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -846,9 +826,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/nhambu-1.png?raw=true" alt="Faca Nhambu" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/nhambu-2.png?raw=true" alt="Faca Nhambu" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/nhambu-3.png?raw=true" alt="Faca Nhambu" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/nhambu-1.png?raw=true" alt="Faca Nhambu" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/nhambu-2.png?raw=true" alt="Faca Nhambu" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/nhambu-3.png?raw=true" alt="Faca Nhambu" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -886,9 +866,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/curio-1.png?raw=true" alt="Faca Curió" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/curio-2.png?raw=true" alt="Faca Curió" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/curio-3.png?raw=true" alt="Faca Curió" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/curio-1.png?raw=true" alt="Faca Curió" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/curio-2.png?raw=true" alt="Faca Curió" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/curio-3.png?raw=true" alt="Faca Curió" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -926,9 +906,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sol-1.png?raw=true" alt="Faca Sol" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sol-2.png?raw=true" alt="Faca Sol" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sol-3.png?raw=true" alt="Faca Sol" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sol-1.png?raw=true" alt="Faca Sol" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sol-2.png?raw=true" alt="Faca Sol" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sol-3.png?raw=true" alt="Faca Sol" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -966,11 +946,11 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sabia-1.png?raw=true" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sabia-2.png?raw=true" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sabia-3.png?raw=true" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sabia-4.png?raw=true" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sabia-5.png?raw=true" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sabia-1.png?raw=true" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sabia-2.png?raw=true" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sabia-3.png?raw=true" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sabia-4.png?raw=true" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/sabia-5.png?raw=true" alt="Faca Sabiá" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1008,9 +988,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/anu-1.png?raw=true" alt="Faca Anu" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/anu-2.png?raw=true" alt="Faca Anu" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/anu-3.png?raw=true" alt="Faca Anu" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/anu-1.png?raw=true" alt="Faca Anu" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/anu-2.png?raw=true" alt="Faca Anu" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/anu-3.png?raw=true" alt="Faca Anu" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1048,9 +1028,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucano-1.png?raw=true" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucano-2.png?raw=true" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucano-3.png?raw=true" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucano-1.png?raw=true" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucano-2.png?raw=true" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tucano-3.png?raw=true" alt="Faca Tucano" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1089,9 +1069,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tropeiro-1.png?raw=true" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tropeiro-2.png?raw=true" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tropeiro-3.png?raw=true" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tropeiro-1.png?raw=true" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tropeiro-2.png?raw=true" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tropeiro-3.png?raw=true" alt="Faca Tropeiro" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1129,9 +1109,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/irere-1.png?raw=true" alt="Faca Irerê" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/irere-2.png?raw=true" alt="Faca Irerê" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/irere-3.png?raw=true" alt="Faca Irerê" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/irere-1.png?raw=true" alt="Faca Irerê" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/irere-2.png?raw=true" alt="Faca Irerê" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/irere-3.png?raw=true" alt="Faca Irerê" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1169,9 +1149,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/grosa-1.png?raw=true" alt="Faca Grosa" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/grosa-2.png?raw=true" alt="Faca Grosa" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/grosa-3.png?raw=true" alt="Faca Grosa" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/grosa-1.png?raw=true" alt="Faca Grosa" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/grosa-2.png?raw=true" alt="Faca Grosa" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/grosa-3.png?raw=true" alt="Faca Grosa" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1204,9 +1184,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/picanheira-1.png?raw=true" alt="Faca Picanheira" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/picanheira-2.png?raw=true" alt="Faca Picanheira" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/picanheira-3.png?raw=true" alt="Faca Picanheira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/picanheira-1.png?raw=true" alt="Faca Picanheira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/picanheira-2.png?raw=true" alt="Faca Picanheira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/picanheira-3.png?raw=true" alt="Faca Picanheira" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1244,12 +1224,12 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-1.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-2.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-3.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-4.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-5.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-6.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-1.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-2.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-3.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-4.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-5.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/churrasqueira-6.png?raw=true" alt="Faca Churrasqueira" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1287,9 +1267,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/conjunto-chaira-1.png?raw=true" alt="Conjunto Faca + Chaira" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/conjunto-chaira-2.png?raw=true" alt="Conjunto Faca + Chaira" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/conjunto-chaira-3.png?raw=true" alt="Conjunto Faca + Chaira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/conjunto-chaira-1.png?raw=true" alt="Conjunto Faca + Chaira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/conjunto-chaira-2.png?raw=true" alt="Conjunto Faca + Chaira" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/conjunto-chaira-3.png?raw=true" alt="Conjunto Faca + Chaira" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1326,9 +1306,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/forjada-1.png?raw=true" alt="Faca Forjada" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/forjada-2.png?raw=true" alt="Faca Forjada" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/forjada-3.png?raw=true" alt="Faca Forjada" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/forjada-1.png?raw=true" alt="Faca Forjada" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/forjada-2.png?raw=true" alt="Faca Forjada" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/forjada-3.png?raw=true" alt="Faca Forjada" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1366,11 +1346,11 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/duchef-1.png?raw=true" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/duchef-2.png?raw=true" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/duchef-3.png?raw=true" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/duchef-4.png?raw=true" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/duchef-5.png?raw=true" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/duchef-1.png?raw=true" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/duchef-2.png?raw=true" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/duchef-3.png?raw=true" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/duchef-4.png?raw=true" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/duchef-5.png?raw=true" alt="Linha Du Chef" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1408,11 +1388,11 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tosquia-1.png?raw=true" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tosquia-2.png?raw=true" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tosquia-3.png?raw=true" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tosquia-4.png?raw=true" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tosquia-5.png?raw=true" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tosquia-1.png?raw=true" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tosquia-2.png?raw=true" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tosquia-3.png?raw=true" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tosquia-4.png?raw=true" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/tosquia-5.png?raw=true" alt="Faca Tesoura de Tosquia" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1445,9 +1425,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/facoes-1.png?raw=true" alt="Facões Reestilizados" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/facoes-2.png?raw=true" alt="Facões Reestilizados" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/facoes-3.png?raw=true" alt="Facões Reestilizados" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/facoes-1.png?raw=true" alt="Facões Reestilizados" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/facoes-2.png?raw=true" alt="Facões Reestilizados" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/facoes-3.png?raw=true" alt="Facões Reestilizados" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1480,11 +1460,11 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/damasco-1.png?raw=true" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/damasco-2.png?raw=true" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/damasco-3.png?raw=true" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/damasco-4.png?raw=true" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/damasco-5.png?raw=true" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/damasco-1.png?raw=true" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/damasco-2.png?raw=true" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/damasco-3.png?raw=true" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/damasco-4.png?raw=true" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/damasco-5.png?raw=true" alt="Aço Damasco" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1522,9 +1502,9 @@
     <div class="product-card">
       <div class="carousel" data-index="0">
         <div class="carousel-track">
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/canivete-1.png?raw=true" alt="Canivete Artesanal" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/canivete-2.png?raw=true" alt="Canivete Artesanal" onerror="this.parentNode.classList.add('ph')"/></div>
-          <div class="carousel-slide" onclick="openLightbox(this)"><img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/canivete-3.png?raw=true" alt="Canivete Artesanal" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/canivete-1.png?raw=true" alt="Canivete Artesanal" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/canivete-2.png?raw=true" alt="Canivete Artesanal" onerror="this.parentNode.classList.add('ph')"/></div>
+          <div class="carousel-slide" onclick="openLightbox(this)"><img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/canivete-3.png?raw=true" alt="Canivete Artesanal" onerror="this.parentNode.classList.add('ph')"/></div>
         </div>
         <button class="carousel-btn prev" onclick="prevSlide(this)">&#8249;</button>
         <button class="carousel-btn next" onclick="nextSlide(this)">&#8250;</button>
@@ -1675,7 +1655,7 @@
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="https://github.com/crisgonbarros/facas-dante/blob/main/img/logo.png?raw=true" alt="Facas Dante" />
+      <img loading="lazy" src="https://github.com/crisgonbarros/facas-dante/blob/main/img/logo.png?raw=true" alt="Facas Dante" />
       <p>Cutelaria artesanal de alto padrão. Cada peça é única — forjada à mão por Dante Roberto Brescianini com mais de 25 anos de ofício.</p>
       <div class="footer-social">
         <a href="https://www.instagram.com/facasdante/" target="_blank" title="Instagram">
